@@ -1,0 +1,64 @@
+{
+    "id": "d7ce6622-6d72-4c3f-afec-3e2f7e2d616c",
+    "name": "right click to add mark in vscode",
+    "marks": [
+        {
+            "id": "49bdb37a-23be-4e3e-94ce-228fdfea92c1",
+            "name": "read current waystation",
+            "body": "First try using TextDocumentContentProvider to read the json file\ndireclty from the file system, then parse its JSON \nand store it within the scope of the command\n\nvscode.workspace.registerTextDocumentContentProvider(myScheme, myProvider);",
+            "path": "/Users/aaronmyatt/Documents/GitHub/waystation/src/extension.ts",
+            "line": 8,
+            "column": 0,
+            "resources": []
+        },
+        {
+            "id": "1bcb159f-61cc-47ae-9950-b595a03ee467",
+            "name": "add mark command",
+            "body": "register the file system read and logic for writing a mark\nin the extensions activate method\nhttps: //code.visualstudio.com/api/references/vscode-api#Extension%3CT%3E",
+            "path": "/Users/aaronmyatt/Documents/GitHub/waystation/src/extension.ts",
+            "line": 16,
+            "column": 0,
+            "resources": []
+        },
+        {
+            "id": "1a9c4d5b-ec9a-44fa-9f4e-0bd2d65aca0f",
+            "name": "package.json:16:register addmark vscode command",
+            "body": "register addmark vscode command",
+            "path": "/Users/aaronmyatt/Documents/GitHub/waystation/package.json",
+            "line": 16,
+            "column": 0,
+            "resources": []
+        },
+        {
+            "id": "b7d3c950-ef31-411d-81f1-bacf4db5384b",
+            "name": "add mark from context menu",
+            "body": "https://code.visualstudio.com/api/references/contribution-points#contributes.menus\n\nonce the activation and command are settled, \nonly one further implementation detail should be required,\nwiring up the command to the context menu in package.json ",
+            "path": "/Users/aaronmyatt/Documents/GitHub/waystation/package.json",
+            "line": 16,
+            "column": 0,
+            "resources": []
+        },
+        {
+            "id": "9dfe0c0c-ca9f-41a4-9f3e-45a4293e91ed",
+            "name": "/Users/aaronmyatt/Documents/GitHub/vscode-waystation/src/wat.txt",
+            "body": "wat",
+            "path": "/Users/aaronmyatt/Documents/GitHub/vscode-waystation/src/wat.txt",
+            "line": 2,
+            "column": 1,
+            "resources": [
+                {
+                    "type": "note",
+                    "id": "1fe4e8ad-3a48-4ed5-9429-ed239b47c8a2",
+                    "name": "File Context",
+                    "body": "\nwat\n"
+                }
+            ]
+        }
+    ],
+    "configuration": {
+        "directory": "~/.waystation/"
+    },
+    "tags": [
+        "vscode"
+    ]
+}
