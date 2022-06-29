@@ -6,15 +6,16 @@ import useAcquireVsCodeApi from "./useAcquireVsCodeApi";
 import exampleWaysatation from "../example-waystation.json";
 
 
+let waystation = reactive({});
+
 export default function useVscodeMessages () {
     const $q = useQuasar();
     let vscodeApi;
-    let waystation = reactive({});
     if (import.meta.env.PROD) {
         vscodeApi = useAcquireVsCodeApi();
-        waystation = Object.assign(waystation, vscodeApi.getState());
+        waystation = waystation.name ? waystation : Object.assign(waystation, vscodeApi.getState());
     } else {
-        waystation = Object.assign(waystation, exampleWaysatation);
+        waystation = waystation.name ? waystation : Object.assign(waystation, exampleWaysatation);
     }
 
     onMounted(() => {
@@ -54,7 +55,7 @@ export default function useVscodeMessages () {
         $q.notify({ message: 'Synced with filesystem', color: "green", icon: matCheckCircle })
     }
 
-    debouncedWatch(waystation, updateWaystation, { debounce: 500 })
+    debouncedWatch(waystation, updateWaystation, { debounce: 1000 })
 
     return waystation;
 }

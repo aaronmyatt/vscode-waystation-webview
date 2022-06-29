@@ -1,12 +1,10 @@
-
-
-
 <script setup>
 import { matEdit, matDelete, matMoreVert } from "@quasar/extras/material-icons";
 import { onMounted, ref } from 'vue';
 import useAcquireVsCodeApi from "./usable/useAcquireVsCodeApi";
 import useVscodeMessages from './usable/useVscodeMessages';
 import Sortable from 'sortablejs';
+import EditableTitle from "./components/EditableTitle.vue";
 
 const waystation = useVscodeMessages();
 const selectedMark = ref();
@@ -94,35 +92,27 @@ onMounted(() => {
 
 <template>
   <div class="bg-grey-1 text-grey-10">
-    <h5 class="text-capitalize">{{ waystation.name }}</h5>
+    <EditableTitle />
+    <p class="text-body1 text-left q-pl-md">{{ waystation.body }}</p>
     <q-list id="draggable">
       <div v-for="mark in waystation.marks" :key="mark.id" class="drag-item">
         <q-item clickable @click="openDocument(mark)">
           <q-item-section>
-            <q-item-label>{{ mark.name }}</q-item-label>
-            <pre>{{ mark.body }}</pre>
+            <q-item-label class="text-subtitle1 text-weight-bold">{{ mark.name }}</q-item-label>
+            <p class="text-body2">{{ mark.body }}</p>
           </q-item-section>
           <q-item-section top side>
             <div class="text-grey-8 q-gutter-xs">
               <q-btn
                 @click.stop="selectedMark = mark; showdialog = true"
-                class="gt-xs"
                 size="12px"
                 flat
                 dense
                 round
                 :icon="matEdit"
               />
-              <q-btn
-                @click.stop="deleteMark(mark)"
-                class="gt-xs"
-                size="12px"
-                flat
-                dense
-                round
-                :icon="matDelete"
-              />
-              <q-btn size="12px" flat dense round :icon="matMoreVert" />
+              <q-btn @click.stop="deleteMark(mark)" size="12px" flat dense round :icon="matDelete" />
+              <q-btn class="gt-xs" size="12px" flat dense round :icon="matMoreVert" />
             </div>
           </q-item-section>
         </q-item>
